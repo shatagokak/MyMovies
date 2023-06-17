@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
+
+    <head>
+        <script src="/docs/5.3/assets/js/color-modes.js"></script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Hugo 0.112.5">
+        <title>Signin Template · Bootstrap v5.3</title>
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
+
+
+        <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" href="" sizes="180x180">
+        <link rel="icon" href="" sizes="32x32" type="image/png">
+        <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+        <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
+        <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+        <link rel="icon"
+            href="data:image/png;base64,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">
+        <meta name="theme-color" content="#712cf9">
+
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+
+            .b-example-divider {
+                width: 100%;
+                height: 3rem;
+                background-color: rgba(0, 0, 0, .1);
+                border: solid rgba(0, 0, 0, .15);
+                border-width: 1px 0;
+                box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+            }
+
+            .b-example-vr {
+                flex-shrink: 0;
+                width: 1.5rem;
+                height: 100vh;
+            }
+
+            .bi {
+                vertical-align: -.125em;
+                fill: currentColor;
+            }
+
+            .nav-scroller {
+                position: relative;
+                z-index: 2;
+                height: 2.75rem;
+                overflow-y: hidden;
+            }
+
+            .nav-scroller .nav {
+                display: flex;
+                flex-wrap: nowrap;
+                padding-bottom: 1rem;
+                margin-top: -1px;
+                overflow-x: auto;
+                text-align: center;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .btn-bd-primary {
+                --bd-violet-bg: #712cf9;
+                --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+                --bs-btn-font-weight: 600;
+                --bs-btn-color: var(--bs-white);
+                --bs-btn-bg: var(--bd-violet-bg);
+                --bs-btn-border-color: var(--bd-violet-bg);
+                --bs-btn-hover-color: var(--bs-white);
+                --bs-btn-hover-bg: #6528e0;
+                --bs-btn-hover-border-color: #6528e0;
+                --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+                --bs-btn-active-color: var(--bs-btn-hover-color);
+                --bs-btn-active-bg: #5a23c8;
+                --bs-btn-active-border-color: #5a23c8;
+            }
+
+            .bd-mode-toggle {
+                z-index: 1500;
+            }
+        </style>
+
+
+        <!-- Custom styles for this template -->
+        <link href="sign-in.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">MyMovies</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="index.html" allign="centre">Home</a>
+                        <!-- <li class="nav-item">
+                            <a class="btn btn-danger" aria-current="page" href="login.html" allign="centre" >
+                        login</a> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About us</a>
+                        </li>
+    
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                City
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item">Please select your city</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Pune</a></li>
+                                <li><a class="dropdown-item" href="#">Mumbai</a></li>
+                                <li><a class="dropdown-item" href="#">Delhi</a></li>
+                                <li><a class="dropdown-item" href="#">Bangalore</a></li>
+                                <li><a class="dropdown-item" href="#">Goa</a></li>
+                                <li><a class="dropdown-item" href="#">Kolkata</a></li>
+                                <li><a class="dropdown-item" href="#">Hyderabad</a></li>
+                            </ul>
+                            </li>
+                    </ul>
+                </div>
+    
+    
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <div class="mx-2">
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#signupModal">
+                        Signup</button>
+                        <a class="btn btn-danger" aria-current="page" href="login.html" allign="centre" >
+                            login</a>
+                </div>
+            </div>
+            </div>
+        </nav>
+       
+  
+  <!-- Modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="signupModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <main class="form-signin w-100 m-auto">
+            <form>
+                <img class="mb-4"
+                    src="data:image/jpeg;base64,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"
+                    alt="" width="72" height="57">
+                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <div class="form-floating">
+                    <input type="cpassword" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Confirm Password</label>
+                </div>
+
+                <div class="form-check text-start my-3">
+                    <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Remember me
+                    </label>
+                </div>
+                <button class="btn btn-primary w-100 py-2" type="submit">Sign Up</button>
+
+            </form>
+        </main>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="signupmodal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <div class="container">
+            <div class="d-flex align-items-center py-4 bg-body-tertiary"></div>
+            <img src="" alt="">
+
+            <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+                <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme"
+                    type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (dark)">
+                    <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+                        <use href="#moon-stars-fill"></use>
+                    </svg>
+                    <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+                    <li>
+                        <button type="button" class="dropdown-item d-flex align-items-center"
+                            data-bs-theme-value="light" aria-pressed="false">
+                            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+                                <use href="#sun-fill"></use>
+                            </svg>
+                            Light
+                            <svg class="bi ms-auto d-none" width="1em" height="1em">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item d-flex align-items-center active"
+                            data-bs-theme-value="dark" aria-pressed="true">
+                            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+                                <use href="#moon-stars-fill"></use>
+                            </svg>
+                            Dark
+                            <svg class="bi ms-auto d-none" width="1em" height="1em">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto"
+                            aria-pressed="false">
+                            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+                                <use href="#circle-half"></use>
+                            </svg>
+                            Auto
+                            <svg class="bi ms-auto d-none" width="1em" height="1em">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+
+            <main class="form-signin w-100 m-auto">
+                <form>
+                    <img class="mb-4"
+                        src="data:image/jpeg;base64,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"
+                        alt="" width="72" height="57">
+                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+                    <div class="form-floating">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+
+                    <div class="form-check text-start my-3">
+                        <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-primary w-100 py-2" type="submit">Log in</button>
+
+                </form>
+            </main>
+            <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+                crossorigin="anonymous"></script>
+
+        </div>
+
+    </body>
+
+</html>

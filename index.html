@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Movie Night</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
+</head>
+
+<body style="background-color: dodgerblue;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">MyMovies</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="index.html" allign="centre">Home</a>
+                        <!-- <li class="nav-item">
+                            <a class="btn btn-danger" aria-current="page" href="login.html" allign="centre" >
+                            login</a> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About us</a>
+                    </li>
+
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            City
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item">Please select your city</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Pune</a></li>
+                            <li><a class="dropdown-item" href="#">Mumbai</a></li>
+                            <li><a class="dropdown-item" href="#">Delhi</a></li>
+                            <li><a class="dropdown-item" href="#">Bangalore</a></li>
+                            <li><a class="dropdown-item" href="#">Goa</a></li>
+                            <li><a class="dropdown-item" href="#">Kolkata</a></li>
+                            <li><a class="dropdown-item" href="#">Hyderabad</a></li>
+                        </ul>
+                        </li>
+                </ul>
+            </div>
+
+
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-danger" type="submit">Search</button>
+            </form>
+            <div class="mx-2">
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#signupModal">
+                    Signup</button>
+                <a class="btn btn-danger" aria-current="page" href="login.html" allign="centre" >
+                    login</a>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary"></button>
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="signupModalLabel">SignUp For MyMovies</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <main class="form-signin w-100 m-auto">
+                <form>
+                    <img class="mb-4"
+                        src="data:image/jpeg;base64,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"
+                        alt="" width="72" height="57">
+                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+                    <div class="form-floating">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="cpassword" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Confirm Password</label>
+                    </div>
+
+                    <div class="form-check text-start my-3">
+                        <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-primary w-100 py-2" type="submit">Sign Up</button>
+
+                </form>
+            </main>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="signupmodal">Close</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" >
+  </button>
+   -->
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="loginModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+    <div id="carouselExampleCaptions" class="carousel slide carousel-fade">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1686639685943_cruisecontrol4.0desktop.jpg"
+                    class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2><b>Welcome to MyMovies!!</b></h2>
+                    <p>Book your shows now.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1682617779318_webbannernpa.jpg"
+                    class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Welcome to MyMovies</h2>
+                    <p>Watch any shows.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://assetscdn1.paytm.com/images/catalog/view_item/1579411/1686567475528.jpg?format=webp"
+                    class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>MyMovies!!</h2>
+                    <p>Entertainment here.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="container my-4">
+
+        <html lang="en" data-bs-theme="dark">
+
+        <head>
+            <script src="/docs/5.3/assets/js/color-modes.js"></script>
+
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="description" content="">
+            <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+            <meta name="generator" content="Hugo 0.112.5">
+            <title>Album example · Bootstrap v5.3</title>
+
+            <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+
+            <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"
+                integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+                crossorigin="anonymous">
+
+            <!-- Favicons -->
+            <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+            <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+            <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+            <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
+            <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+            <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+            <meta name="theme-color" content="#712cf9">
+
+
+            <style>
+                .bd-placeholder-img {
+                    font-size: 1.125rem;
+                    text-anchor: middle;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    user-select: none;
+
+                }
+
+                @media (min-width: 768px) {
+                    .bd-placeholder-img-lg {
+                        font-size: 3.5rem;
+                        color: #000;
+                    }
+                }
+
+                .b-example-divider {
+                    width: 100%;
+                    height: 3rem;
+                    background-color: rgba(0, 0, 0, .1);
+                    border: solid rgba(0, 0, 0, .15);
+                    border-width: 1px 0;
+                    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+                }
+
+                .b-example-vr {
+                    flex-shrink: 0;
+                    width: 1.5rem;
+                    height: 100vh;
+                }
+
+                .bi {
+                    vertical-align: -.125em;
+                    fill: currentColor;
+                }
+
+                .nav-scroller {
+                    position: relative;
+                    z-index: 2;
+                    height: 2.75rem;
+                    overflow-y: hidden;
+                }
+
+                .nav-scroller .nav {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    padding-bottom: 1rem;
+                    margin-top: -1px;
+                    overflow-x: auto;
+                    text-align: center;
+                    white-space: nowrap;
+                    -webkit-overflow-scrolling: touch;
+                }
+
+                .btn-bd-primary {
+                    --bd-violet-bg: #712cf9;
+                    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+                    --bs-btn-font-weight: 600;
+                    --bs-btn-color: var(--bs-white);
+                    --bs-btn-bg: var(--bd-violet-bg);
+                    --bs-btn-border-color: var(--bd-violet-bg);
+                    --bs-btn-hover-color: var(--bs-white);
+                    --bs-btn-hover-bg: #6528e0;
+                    --bs-btn-hover-border-color: #6528e0;
+                    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+                    --bs-btn-active-color: var(--bs-btn-hover-color);
+                    --bs-btn-active-bg: #5a23c8;
+                    --bs-btn-active-border-color: #5a23c8;
+                }
+
+                .bd-mode-toggle {
+                    z-index: 1500;
+                }
+            </style>
+
+
+        </head>
+
+        <body>
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="check2" viewBox="0 0 16 16">
+                    <path
+                        d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z">
+                    </path>
+                </symbol>
+                <symbol id="circle-half" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+                </symbol>
+                <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z">
+                    </path>
+                    <path
+                        d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z">
+                    </path>
+                </symbol>
+                <symbol id="sun-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z">
+                    </path>
+                </symbol>
+            </svg>
+
+            <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+                <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme"
+                    type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (dark)">
+                    <img src=".." alt="">
+                    <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+                    <li>
+                        <button type="button" class="dropdown-item d-flex align-items-center"
+                            data-bs-theme-value="light" aria-pressed="false">
+                            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+                                <use href="#sun-fill"></use>
+                            </svg>
+                            Light
+                            <svg class="bi ms-auto d-none" width="1em" height="1em">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item d-flex align-items-center active"
+                            data-bs-theme-value="dark" aria-pressed="true">
+                            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+                                <use href="#moon-stars-fill"></use>
+                            </svg>
+                            Dark
+                            <svg class="bi ms-auto d-none" width="1em" height="1em">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto"
+                            aria-pressed="false">
+                            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+                                <use href="#circle-half"></use>
+                            </svg>
+                            Auto
+                            <svg class="bi ms-auto d-none" width="1em" height="1em">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+
+            <header data-bs-theme="dark">
+                <div class="collapse text-bg-dark" id="navbarHeader">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8 col-md-7 py-4">
+                                <h4>About</h4>
+                                <p class="text-body-secondary">Movies shows watch anything for free.</p>
+                            </div>
+                            <div class="col-sm-4 offset-md-1 py-4">
+                                <h4>Contact</h4>
+                                <ul class="list-unstyled">
+                                    <!-- <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                                    <li><a href="#" class="text-white">Like on Facebook</a></li> -->
+                                    <li><a href="contact.html" class="text-white">Email</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar navbar-dark bg-dark shadow-sm">
+                    <div class="container">
+                        <a href="#" class="navbar-brand d-flex align-items-center">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                aria-hidden="true" class="me-2" viewBox="0 0 24 24">
+                                <path
+                                    d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                                </path>
+                                <circle cx="12" cy="13" r="4"></circle>
+                            </svg> -->
+                            <strong>What's your vibe!</strong>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+
+                <section class="py-5 text-center container">
+                    <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <h1 class="fw-light"><b>Watch And Vibe!!</b></h1>
+                            <!-- <p class="lead text-body-secondary">Something short and leading about the collection
+                                below—its contents, the creator, etc. Make it short and sweet, but not too short so
+                                folks don’t simply skip over it entirely.</p>
+                            <p>
+                                <a href="#" class="btn btn-primary my-2">Main call to action</a>
+                                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+                            </p> -->
+                        </div>
+                    </div>
+                </section>
+
+                <div class="album py-1 bg-body-tertiary">
+                    <div class="container">
+
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="https://occ-0-4344-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABc-QPrv7rLU3cfflOOhKqWq7xxGAGU95rOrCO8nTcVAXYvTYFwrNHnEmkhUJU4I0fiYs_C0xfe2W2KelMbDryU9CRX4XIDVLsmk.webp?r=fbf"
+                                        alt="">
+                                    <div class="card-body">
+                                        <p class="card-text">Paranormal investigators Ed and Lorraine Warren work to
+                                            help a family terrorized by a dark presence in their farmhouse.
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">View</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Book</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Watch</button>
+                                            </div>
+                                            <small class="text-body-secondary">9 mins</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="https://occ-0-4344-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABcx-UkrB_ez1SL1zKnomxXSxSFiXDRhSHwui5RllnFj9QZiVRqHYKzJ-MxER0IPHUqfThhWNSq08BwtoVQ2uLLPMOrfDmhK1hV8.webp?r=b4c"
+                                        alt="">
+                                    <div class="card-body">
+                                        <p class="card-text">Five friends head to a remote cabin, where the discovery of
+                                            a Book of the Dead leads them to unwittingly summon up demons living in the
+                                            nearby woods.
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">View</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Book</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Watch</button>
+                                            </div>
+                                            <small class="text-body-secondary">9 mins</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="https://occ-0-4344-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABVd5gECSwrk8kuFWaqPWipCzAlCiH8QH1GKVRe3mc5NUYld8l2NfwPln1DVHhFH3e99a1eUhcABzoto6RHYOo8glDVawWWDk1qM.webp?r=33d"
+                                        alt="">
+                                    <div class="card-body">
+                                        <p class="card-text">After being bitten by a genetically-modified spider, a shy
+                                            teenager gains spider-like abilities that he uses to fight injustice as a
+                                            masked superhero and face a vengeful enemy.
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">View</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Book</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Watch</button>
+                                            </div>
+                                            <small class="text-body-secondary">9 mins</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="https://occ-0-4344-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABTNSjol51Vi9dvQWyDBIhWZ9jTfoEvZaQy8Y9Moh3ceTzBkb8gV6tVuZ38GSjJYTk9QAZUC9det-MuveA3AKLSxQjq5WmAW9q0w.webp?r=f11"
+                                        alt="">
+                                    <div class="card-body">
+                                        <p class="card-text">A series of mysterious events change the life of a blind
+                                            pianist, who must now report a crime that he should technically know nothing
+                                            of.
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">View</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Book</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Watch</button>
+                                            </div>
+                                            <small class="text-body-secondary">9 mins</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="https://occ-0-4344-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABVRHOd2xVz3ol6lMGfhSbKyWQUx0ZVfl3-XE7XTeJyM0p-q_AZKr6iFHrecqA7KH-1pAFKDZeFuONndsjNvY0mXR5D2ls8TS6YU.webp?r=281"
+                                        alt="">
+                                    <div class="card-body">
+                                        <p class="card-text">A man travelling to Rameshwaram via Chennai express in
+                                            order to immerse his late grandfather's ashes finds himself in trouble after
+                                            helping a don's daughter and her cousins board the train.
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">View</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Book</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Watch</button>
+                                            </div>
+                                            <small class="text-body-secondary">9 mins</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="https://occ-0-4344-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABW94Dq-CenUyk3La--Ay1C-qWG0yMrvW_1duDLwduMe5TkxElCGN9yxO6MUydSJtIRrUEiqE1djXlVU9j9JO3LJCuGJa-IAvq2sh3NWPSHUXFOXfRnlazLdwBU3HwSPmxe-W.jpg?r=e44"
+                                        alt="">
+                                    <div class="card-body">
+                                        <p class="card-text">A notorious thief allies with a street racer for a grand
+                                            heist involving an elaborate game of deceit with authorities, who have their
+                                            own dirty secrets.
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">View</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Book</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Watch</button>
+                                            </div>
+                                            <small class="text-body-secondary">9 mins</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="https://occ-0-4344-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABXYpCU2RSs4a5NRWzn1o0hxIY8pPaJFoPomwcWws8lZcKKAfkb1z9wb-ktpjHI6wc6BhxM9wEcppQQTPtsKkFEP56bH6M6Bi64I.webp?r=7ad"
+                                        alt="">
+                                    <div class="card-body">
+                                        <p class="card-text">Desperate measures are taken by a man who tries to save his
+                                            family from the dark side of the law, after they commit an unexpected crime.
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">View</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Book</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Watch</button>
+                                            </div>
+                                            <small class="text-body-secondary">9 mins</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="https://occ-0-4344-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABQLF308k-YwzQgWrQXRR6_3_PFzDW0k7NxYRh2hvAI8Oe03uW1HDUclA94trKMw37C-7wf1kBhk4vBclgQiO7A_UDAIY2ZhIHHb4GO4DHEn2rRDuKnbT3RPaF3aXzF_dvUBWVZ9S_msdF7DEOaiBV4zrJiVxDAK-tzM.webp?r=a35"
+                                        alt="">
+                                    <div class="card-body">
+                                        <p class="card-text">Madness ensues when a 'player' in the world of romantic
+                                            relationships finds a girl who's a worthy opponent, that believes love is a
+                                            battle of wits.
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">View</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Book</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Watch</button>
+                                            </div>
+                                            <small class="text-body-secondary">9 mins</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="https://occ-0-4344-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABf6ZJpaulxD1AAmgaSqW-uzpDxKjeNtXXRom9OOioRBSalXtGWKR52xhPFdmAKG_YG8z_4k2K8CU3Y3HDHVZkeZlcVLsKPcknnY.webp?r=0bb"
+                                        alt="">
+                                    <div class="card-body">
+                                        <p class="card-text">Kabir and Naina bond during a trekking trip. Before Naina
+                                            can express herself, Kabir leaves India to pursue his career. They meet
+                                            again years later, but he still cherishes his dreams more than bonds.
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">View</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Book</button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Watch</button>
+                                            </div>
+                                            <small class="text-body-secondary">9 mins</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+            <footer class="text-body-primary py-5">
+                <div class="container">
+                    <p class="float-end mb-1">
+                        <a href="#">Back to top</a>
+                    </p>
+
+                </div>
+            </footer>
+            <!-- <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+                crossorigin="anonymous"></script> -->
+
+        </body>
+
+        </html>
+    </div>
+</body>
+
+</html>
